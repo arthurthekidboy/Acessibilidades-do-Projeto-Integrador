@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegação Simples</title>
+    <style>
+        .item {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        .active {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div id="item1" class="item" tabindex="0">Item 1</div>
+<div id="item2" class="item" tabindex="0">Item 2</div>
+<div id="item3" class="item" tabindex="0">Item 3</div>
+<div id="item4" class="item" tabindex="0">Item 4</div>
+
+<script>
+    const items = document.querySelectorAll('.item');
+    let index = 0;
+
+    // Atualiza o item ativo
+    function updateActiveItem() {
+        items.forEach(item => item.classList.remove('active'));
+        items[index].classList.add('active');
+        items[index].focus(); // Foca no item ativo
+    }
+
+    // Lida com as teclas pressionadas
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+            index = (index + 1) % items.length; // Move para a direita
+            updateActiveItem();
+            event.preventDefault();
+        } else if (event.key === 'ArrowLeft') {
+            index = (index - 1 + items.length) % items.length; // Move para a esquerda
+            updateActiveItem();
+            event.preventDefault();
+        }
+    });
+
+    // Define o foco inicial e o item ativo
+    updateActiveItem();
+</script>
+
+</body>
+</html>

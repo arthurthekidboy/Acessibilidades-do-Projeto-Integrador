@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajuste de Fonte</title>
+    <style>
+        body {
+            font-size: 16px; /* Tamanho padrão */
+        }
+    </style>
+</head>
+<body>
+    <h1>Ajuste de Fonte</h1>
+    <p id="texto">Este é um exemplo de texto que pode ser ajustado em tamanho.</p>
+
+    <button id="aumentar">Aumentar Fonte</button>
+    <button id="diminuir">Diminuir Fonte</button>
+
+    <script>
+        const texto = document.getElementById('texto');
+        let tamanhoFonte = 16; // Tamanho inicial
+
+        document.getElementById('aumentar').addEventListener('click', () => {
+            tamanhoFonte += 2; // Aumenta 2px
+            texto.style.fontSize = `${tamanhoFonte}px`;
+        });
+
+        document.getElementById('diminuir').addEventListener('click', () => {
+            if (tamanhoFonte > 8) { // Impede que o tamanho fique muito pequeno
+                tamanhoFonte -= 2; // Diminui 2px
+                texto.style.fontSize = `${tamanhoFonte}px`;
+            }
+        });
+    </script>
+</body>
+</html>
